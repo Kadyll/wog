@@ -43,12 +43,7 @@ return array(
                     ),
                 ),
             ),
-            'team' => array(
-                'type' => 'Hostname',
-                'options' => array(
-                    'route' => '/forum',
-                ),
-            ),
+            
         ),
     ),
     'controllers' => array(
