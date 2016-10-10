@@ -3,7 +3,16 @@
     font-family: exo;
     src:url('../fonts/Exo-Regular.otf');
 }
-
+@font-face
+{
+    font-family: exobold;
+    src:url('../fonts/Exo-Bold.otf');
+}
+@font-face
+{
+    font-family: exoitalic;
+    src:url('../fonts/Exo-Italic.otf');
+}
 body {
    line-height: 1.42;
 }
@@ -13,6 +22,14 @@ body {
     font-family: 'exo',sans-serif;
     font-size: 14px;
     color: rgb(49,53,61);
+}
+strong
+{
+    font-family: 'exobold', sans-serif;
+}
+i
+{
+    font-family: 'exoitalic',sans-serif;
 }
 h1,h2,h3,h4
 {
