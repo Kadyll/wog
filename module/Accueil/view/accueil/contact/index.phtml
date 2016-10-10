@@ -1,5 +1,5 @@
 <?php
-$recaptcha = new ZendService\ReCaptcha\ReCaptcha($this->publicKey, $this->privateKey, null, array('lang' => 'fr'));
+$recaptcha = new \Zend\ReCaptcha\ReCaptcha($this->publicKey, $this->privateKey, null,array('lang'=>'fr'));
 ?>
 <section class="col-md-6">
     <form class="form-horizontal" method="post" action="<?php echo $this->url('contact', array('action' => 'getForm')); ?>">
@@ -23,8 +23,7 @@ $recaptcha = new ZendService\ReCaptcha\ReCaptcha($this->publicKey, $this->privat
             <textarea class="form-control" id="messageInput" rows="5" name="message" required></textarea>
         </div>
         <div class="form-group">
-            <div class="g-recaptcha" data-sitekey="6Lff0wgUAAAAANlCdA-rkbJ93V33Z96r9IPYXpPB">
-            </div>
+            <?php echo $recaptcha->getHTML(); ?>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-wog btn-lg"><?php echo $this->translate('Envoyer'); ?></button>

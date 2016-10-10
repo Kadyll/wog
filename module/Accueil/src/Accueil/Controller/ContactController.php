@@ -147,7 +147,7 @@ class ContactController extends AbstractActionController
     
     private function _validCaptcha($captchaReponse)
     {
-         $recaptcha = new \ZendService\ReCaptcha\ReCaptcha( $this->_getServConfig()['google']['publicKey'],
+         $recaptcha = new \Zend\ReCaptcha\ReCaptcha( $this->_getServConfig()['google']['publicKey'],
                                                             $this->_getServConfig()['google']['privateKey']);
         
         if(empty($captchaReponse))

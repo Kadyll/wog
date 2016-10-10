@@ -1,0 +1,1 @@
+../sebastianbergmann/phpcov/phpcov.php
