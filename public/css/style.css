@@ -63,6 +63,8 @@ a:focus , a:active , a:hover
 
 .btn-wog, .btn-wog:visited
 {
+    -webkit-transition: ease 0.5s;
+    transition: ease 0.5s;
     background-color: rgba(255,255,255,1);
     border-radius: 0;
     color: rgba(28,29,33,1);
