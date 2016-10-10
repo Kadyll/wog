@@ -11,7 +11,7 @@ namespace Accueil\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Application\Service\LogService;
+//use Application\Service\LogService;
 
 use Zend\Mail\Message;
 use Zend\Mime\Message as MimeMessage;
@@ -20,18 +20,18 @@ use Zend\Validator;
 
 class ContactController extends AbstractActionController
 {
-    private $_logService;
+//    private $_logService;
     private $_config;
     private $_servTranslator;
     /**
      * Lazy getter pour le service de logs
      * @return service Le service de logs
      */
-    private function _getLogService() {
-        return  $this->_logService ?
-                $this->_logService :
-                $this->_logService = $this->getServiceLocator()->get('LogService');
-    }
+//    private function _getLogService() {
+//        return  $this->_logService ?
+//                $this->_logService :
+//                $this->_logService = $this->getServiceLocator()->get('LogService');
+//    }
     private function _getServConfig()
     {
         if(!$this->_config)
@@ -132,12 +132,12 @@ class ContactController extends AbstractActionController
         if($bSent)
         {
             $this->flashMessenger()->addMessage($this->_getServTranslator()->translate("Votre message a été envoyé."),'success');
-            $this->_getLogService()->log(LogService::NOTICE, "Email de $sMail", LogService::USER);
+//            $this->_getLogService()->log(LogService::NOTICE, "Email de $sMail", LogService::USER);
         }
         else
         {
             $this->flashMessenger()->addMessage($this->_getServTranslator()->translate("Votre message n'a pu être envoyé."), 'error');
-            $this->_getLogService()->log(LogService::ERR, "Erreur d'envoie de mail à $sMail", LogService::USER);
+//            $this->_getLogService()->log(LogService::ERR, "Erreur d'envoie de mail à $sMail", LogService::USER);
             
         }           
         return $this->redirect()->toRoute('contact');
