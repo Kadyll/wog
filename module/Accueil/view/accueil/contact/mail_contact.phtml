@@ -1,0 +1,7 @@
+<p>
+    Message de <b><?php echo $this->post['name'];?></b> <i> <?php echo $this->post['email'] ; ?></i> le <?php echo date("d-m-Y").' à '.date("H:i") ;?> <br>
+</p>
+<h4> <?php echo nl2br($this->post['subject']); ?></h4>
+<p>
+    <?php echo nl2br($this->post['message']); ?>
+</p>

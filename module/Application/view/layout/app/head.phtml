@@ -1,0 +1,29 @@
+<meta charset="utf-8">
+<?php echo $this->headTitle($this->translate('Wrath of God'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+<?php
+echo $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+?>
+<meta name="description" content="Vous jouez à World of Warcraft, vous êtes une guilde avec au moins un roster raid actif. Vous souhaiteriez savoir qui loot quoi et quand , le taux de présence de vos membres, les boss que vous avez tombés, etc..Raid TracKer est un outils fait pour vous! Pour faire simple, RTK offre de nombreuses facilités de gestion de données de raid d'un ou plusieurs rosters d'une guilde." />
+<!-- Le styles -->
+<?php
+echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+        ->appendStylesheet($this->basePath('css/bootstrap.css'))
+        ->appendStylesheet($this->basePath('css/style.css'))
+        ->appendStylesheet("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css")
+        ->appendStylesheet("https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css")
+        ->appendStylesheet("https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css");
+
+?>
+
+<!-- Scripts -->
+<?php
+echo $this->headScript()
+        ->appendFile($this->basePath('js/jquery.min.js'))
+        ->appendFile($this->basePath('js/bootstrap.min.js'))
+        ->appendFile($this->basePath('js/frontend.js'))
+        ->appendFile("https://www.google.com/recaptcha/api.js")
+;
+?>

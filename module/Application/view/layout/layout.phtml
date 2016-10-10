@@ -1,0 +1,50 @@
+<?php echo $this->plugin('doctype')->setDoctype(\Zend\View\Helper\Doctype::HTML5); ?>
+<html lang="fr">
+    <head>
+        <?php echo $this->render('layout/app/head') ?>
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-72079314-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+    </head>
+    <body id="green-light">           
+        <!--                Container                -->
+        <div id="bloc_page">
+            <header class="header"id="main-header">
+
+                <!--                Header                   -->
+                <?php echo $this->render('layout/app/header') ?>
+            </header>
+            <?php echo $this->render('layout/app/header_menu') ?>
+
+            <div class="content-wrapper">
+                <div class="col-md-2"></div>
+                <section class="main-content col-md-8">  
+                    <?php echo $this->content; ?> 
+                </section>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+        <!--               Footer                   -->
+        <footer class="main-footer-copy">
+            <?php echo $this->render('layout/app/footer'); ?>
+        </footer>
+        <!--            Control sidebar             -->
+
+        <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>
