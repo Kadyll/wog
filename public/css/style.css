@@ -14,7 +14,7 @@
     src:url('../fonts/Exo-Italic.otf');
 }
 body {
-   line-height: 1.42;
+    line-height: 1.42;
 }
 
 #bloc_page
@@ -81,7 +81,7 @@ header
     background: url('../img/header.jpg');
     background-size:cover;
     height: 250px;
-    
+
 }
 header .logo
 {
@@ -90,7 +90,7 @@ header .logo
     padding-top: 25px;
     width: 200px;
     height: 250px;
-    
+
 }
 header .logo img
 {
@@ -130,8 +130,8 @@ header .logo img
     tranform: skew(-25deg);
     transition: background-color 0.3s ease;
     background-color: rgba(18,18,21,1);
-    
-    
+
+
 }
 .navbar .navbar-nav
 {
@@ -201,4 +201,33 @@ footer
     border-radius: 0;
     border: none;
     color: #FFF;
+}
+
+@media (max-width:425px)
+{
+    /* HEADER */
+    header
+    {
+        display: block;
+
+        background: url('../img/header.jpg');
+        background-size:cover;
+        height: 110px;
+
+    }
+    header .logo
+    {
+        display: block;
+        margin: auto;
+        padding-top: 10px;
+        width: 100px;
+        height: 100px;
+
+    }
+    header .logo img
+    {
+        width: 100px;
+
+    }
+
 }
