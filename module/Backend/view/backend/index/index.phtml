@@ -2,7 +2,7 @@
     <?php if(!$isAdmin): ?>
     <div class="col-md-4"></div>
     
-        <form class="form-horizontal col-md-4" method="post" action="">
+        <form class="form-horizontal col-md-4" method="post" action="<?php echo $this->url('backend', array('action' => 'getForm')); ?>">
             <div class="form-head">
                 <h4><?php echo $this->translate('Connexion'); ?></h4>
             </div>

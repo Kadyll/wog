@@ -48,6 +48,8 @@ class IndexController extends AbstractActionController {
         if (!$oSession->offsetExists('administrateur')) {
             $bAdmin = false;
         }
+        var_dump($oAdmin);
+        die();
         $oViewModel->setVariable('isAdmin', $bAdmin);
         
         return $oViewModel;
