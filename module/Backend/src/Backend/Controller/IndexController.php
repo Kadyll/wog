@@ -18,7 +18,7 @@ class IndexController extends AbstractActionController {
 
     public $_servTranslator = null;
     private $_oSessionUser = null;
-    private $_usersTable = null;
+    private $_usersTable;
     /**
      * Retourne le service de traduction en mode lazy.
      *

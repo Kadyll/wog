@@ -1,0 +1,54 @@
+
+/* HEADER */
+header
+{
+    display: block;
+
+    background: url('../img/header.jpg');
+    background-size:cover;
+    height: 250px;
+
+}
+header .logo
+{
+    display: block;
+    margin: auto;
+    padding-top: 25px;
+    width: 200px;
+    height: 250px;
+
+}
+header .logo img
+{
+    width: 200px;
+
+}
+
+@media (max-width:425px)
+{
+    /* HEADER */
+    header
+    {
+        display: block;
+
+        background: url('../img/header.jpg');
+        background-size:cover;
+        height: 110px;
+
+    }
+    header .logo
+    {
+        display: block;
+        margin: auto;
+        padding-top: 10px;
+        width: 100px;
+        height: 100px;
+
+    }
+    header .logo img
+    {
+        width: 100px;
+
+    }
+
+}
