@@ -8,6 +8,7 @@ header
     background-size:cover;
     height: 250px;
     border-bottom: 3px solid rgba(211,209,206,1);
+    box-shadow: 3px 3px #000 ;
 }
 header .logo
 {
