@@ -12,8 +12,8 @@ namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
-
 use Application\Service\LogService;
+
 
 class Module {
 
@@ -34,7 +34,7 @@ class Module {
             ),
         );
     }
-    
+
     public function getServiceConfig() {
         return array(
             'invokables' => array(
@@ -42,18 +42,17 @@ class Module {
                 'LogService' => 'Application\Service\LogService',
             ),
             'factories' => array(
-                'Zend\Log' => function($sm){
+                'Zend\Log' => function($sm) {
                     $auth = $sm->get('zfcuser_auth_service');
-                    
-                    $logger = new \Zend\Log\Logger;
-                    if($auth->hasIdentity())
-                    {
-                        $sName = $auth->getIdentity()->getId() . '-' . $auth->getIdentity()->getUsername();
-                        $writer = new \Zend\Log\Writer\Stream('./data/log/users/'.$sName.'-users.log');
-                    }
-                    else $writer = new \Zend\Log\Writer\Stream('./data/log/users/users.log');
 
-                    $logger->addWriter($writer);  
+                    $logger = new \Zend\Log\Logger;
+                    if ($auth->hasIdentity()) {
+                        $sName = $auth->getIdentity()->getId() . '-' . $auth->getIdentity()->getUsername();
+                        $writer = new \Zend\Log\Writer\Stream('./data/log/users/' . $sName . '-users.log');
+                    } else
+                        $writer = new \Zend\Log\Writer\Stream('./data/log/users/users.log');
+
+                    $logger->addWriter($writer);
 
                     return $logger;
                 },

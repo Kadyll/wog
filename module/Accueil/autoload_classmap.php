@@ -3,7 +3,6 @@
 return array(
     'Accueil\Controller\IndexController' => __DIR__ . '/src/Accueil/Controller/IndexController.php',
     'Accueil\Controller\ContactController' => __DIR__ . '/src/Accueil/Controller/ContactController.php',
-    'Accueil\Controller\AproposController' => __DIR__ . '/src/Accueil/Controller/AproposController.php',
     'Accueil\Module'                     => __DIR__ . '/Module.php',
     
 );

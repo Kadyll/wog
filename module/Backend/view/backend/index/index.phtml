@@ -1,0 +1,24 @@
+<section class="col-md-12">
+    <?php if(!$isAdmin): ?>
+    <div class="col-md-4"></div>
+    
+        <form class="form-horizontal col-md-4" method="post" action="">
+            <div class="form-head">
+                <h4><?php echo $this->translate('Connexion'); ?></h4>
+            </div>
+            <div class="form-group">
+                <label for="pseudoInput" class="control-label"><?php echo $this->translate('Pseudo*'); ?></label>
+                <input type="text" class="form-control" id="nameInput" name="pseudo" placeholder="Pseudo">
+            </div>
+            <div class="form-group">
+                <label for="passwordInput" class="control-label"><?php echo $this->translate('Mot de passe*'); ?></label>
+                <input type="password" class="form-control" id="emailInput" name="password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-wog btn-lg"><?php echo $this->translate('Se connecter'); ?></button>
+            </div>
+        </form>
+    
+    <div class="col-md-4"></div>
+    <?php endif;?>
+</section>
