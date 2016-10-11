@@ -189,6 +189,8 @@ li .btn-wog
 {
     min-width: 100px;
     margin-bottom: 2px;
+    font-size: 18px;
+    text-transform: uppercase;
 }
 .form-horizontal
 {
