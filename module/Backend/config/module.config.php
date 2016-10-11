@@ -23,30 +23,10 @@ return array(
                     ),
                 ),
             ),
-            'contact' => array(
+            'backend' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/contact[/:action]',
-                    'defaults' => array(
-                        'controller' => 'Accueil\Controller\Contact',
-                        'action' => 'index',
-                    ),
-                ),
-            ),
-            'team' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route' => '/team',
-                    'defaults' => array(
-                        'controller' => 'Accueil\Controller\Team',
-                        'action' => 'index',
-                    ),
-                ),
-            ),
-            'backend' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route' => '/backend',
+                    'route' => '/backend[/:action]',
                     'defaults' => array(
                         'controller' => 'Backend\Controller\Index',
                         'action' => 'index',
