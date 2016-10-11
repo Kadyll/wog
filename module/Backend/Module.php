@@ -14,6 +14,7 @@ use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Backend\Model\UsersTable;
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Db\ResultSet\ResultSet;
 
 class Module {
 
