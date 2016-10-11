@@ -46,12 +46,12 @@ class UsersTable
         $sPseudo = $pseudo;
         $sPassword = $password;
         $where = new \Zend\Db\Sql\Where();
-        $where->equalTo('UserName', $sPseudo);
+        $where->equalTo('Username', $sPseudo);
         $where->AND->equalTo('Password', $password);
         
         $rowset = $this->tableGateway->select($where);
-        var_dump($this->tableGateway);
-        die();
+        
+        $row = $rowset->current();
         if(!$row) {
             return false;
         }
