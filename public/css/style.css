@@ -185,7 +185,10 @@ footer
 {
     background-color: rgba(255,255,255,0.9);
 }
-
+li .btn-wog
+{
+    min-width: 100px;
+}
 .form-horizontal
 {
     background-color: rgba(255,255,255,0.30);
