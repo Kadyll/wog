@@ -53,7 +53,7 @@ class Module {
                 },
                 'UsersTableGateway' => function($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                    return new TableGateway('Users', $dbAdapter);
+                    return new TableGateway('users', $dbAdapter);
                 },
                 'Backend\Model\RolesTable' => function($sm) {
                     $tableGateway = $sm->get('RolesTableGateway');
@@ -62,7 +62,7 @@ class Module {
                 },
                 'RolesTableGateway' => function($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                    return new TableGateway('Roles', $dbAdapter);
+                    return new TableGateway('roles', $dbAdapter);
                 },
             ),
         );

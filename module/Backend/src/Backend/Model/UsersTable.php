@@ -32,7 +32,7 @@ class UsersTable
     public function getUserById($idUser)
     {
         $iIdUser = (int)$idUser;
-        $rowset = $this->tableGateway->select(array('iduser' => $iIdUser));
+        $rowset = $this->tableGateway->select(array('idUser' => $iIdUser));
         $row = $rowset->current();
         if(!$row) {
             throw new Exception("Could not find row");
@@ -46,8 +46,8 @@ class UsersTable
         $sPseudo = $pseudo;
         $sPassword = $password;
         $where = new \Zend\Db\Sql\Where();
-        $where->equalTo('Username', $sPseudo);
-        $where->AND->equalTo('Password', $password);
+        $where->equalTo('username', $sPseudo);
+        $where->AND->equalTo('password', $password);
         
         $rowset = $this->tableGateway->select($where);
         
