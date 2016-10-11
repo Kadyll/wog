@@ -50,8 +50,8 @@ class UsersTable
         $where->AND->equalTo('Password', $password);
         
         $rowset = $this->tableGateway->select($where);
-        
-        $row = $rowset->current();
+        var_dump($this->tableGateway);
+        die();
         if(!$row) {
             return false;
         }
