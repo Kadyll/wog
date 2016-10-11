@@ -13,8 +13,9 @@ namespace Backend;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Backend\Model\UsersTable;
+use Backend\Model\RolesTable;
 use Zend\Db\TableGateway\TableGateway;
-use Zend\Db\ResultSet\ResultSet;
+
 
 class Module {
 
@@ -46,7 +47,7 @@ class Module {
                 },
                 'UsersTableGateway' => function($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                    return new TableGateway('users', $dbAdapter);
+                    return new TableGateway('Users', $dbAdapter);
                 },
                 'Backend\Model\RolesTable' => function($sm) {
                     $tableGateway = $sm->get('RolesTableGateway');
@@ -55,7 +56,7 @@ class Module {
                 },
                 'RolesTableGateway' => function($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                    return new TableGateway('roles', $dbAdapter);
+                    return new TableGateway('Roles', $dbAdapter);
                 },
             ),
         );
