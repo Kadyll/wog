@@ -44,12 +44,12 @@ class UsersTable
     public function isUser($pseudo,$password)
     {
         $sPseudo = $pseudo;
-        $sPassword = md5($password);
+        $sPassword = $password;
+        $where = new \Zend\Db\Sql\Where();
+        $where->equalTo('UserName', $sPseudo);
+        $where->AND->equalTo('Password', $password);
         
-        $rowset = $this->tableGateway->select(array(
-            'Username' => $sPseudo,
-            'Password' => $sPassword
-                ));
+        $rowset = $this->tableGateway->select($where);
         
         $row = $rowset->current();
         if(!$row) {
