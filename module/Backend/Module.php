@@ -23,6 +23,12 @@ class Module {
         $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+        
+        $oSessionConfig = new \Zend\Session\Config\SessionConfig();
+        $oSessionManager = new \Zend\Session\SessionManager($oSessionConfig);
+        $oSessionManager->start();
+        
+        \Zend\Session\Container::setDefaultManager($oSessionManager);
     }
 
     public function getConfig() {
