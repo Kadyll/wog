@@ -43,7 +43,7 @@ class Module {
                     $table = new UsersTable($tableGateway);
                     return $table;
                 },
-                'UsersTableGateway' => function($em) {
+                'UsersTableGateway' => function($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Users());
@@ -54,7 +54,7 @@ class Module {
                     $table = new RolesTable($tableGateway);
                     return $table;
                 },
-                'RolesTableGateway' => function($em) {
+                'RolesTableGateway' => function($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Roles());
