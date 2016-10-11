@@ -43,7 +43,7 @@ class IndexController extends AbstractActionController {
     public function indexAction() {
         $oViewModel = new ViewModel();
         $oSession = $this->_getSessionUser();
-        $oAdmin = false;
+        $bAdmin = false;
         
         if ($oSession->offsetExists('administrateur')) {
             $bAdmin = true;
