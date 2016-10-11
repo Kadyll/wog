@@ -63,6 +63,7 @@ class IndexController extends AbstractActionController {
 
         $bUser = $this->_getUsersTable()->isUser($aPost['pseudo'],$aPost['password']);
         var_dump($bUser);
+        die();
         if(!$bUser)
         {
             return $this->redirect()->toRoute('home');
