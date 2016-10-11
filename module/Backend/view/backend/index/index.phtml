@@ -21,15 +21,6 @@
     
     <div class="col-md-4"></div>
     <?php else: ?>
-    <div class="nav-backend">
-        <ul>
-            <li>
-                <a href="#"class="btn btn-wog"><?php echo $this->translate('News'); ?></a>
-            </li>
-            <li>
-                <a href="#" class="btn btn-wog"><?php echo $this->translate('Team'); ?></a>
-            </li>
-        </ul>
-    </div>
+    <?php $this->content('menu'); ?>
     <?php endif;?>
 </section>
