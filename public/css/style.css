@@ -188,6 +188,7 @@ footer
 li .btn-wog
 {
     min-width: 100px;
+    margin-bottom: 2px;
 }
 .form-horizontal
 {
