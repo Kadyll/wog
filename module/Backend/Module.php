@@ -46,9 +46,7 @@ class Module {
                 },
                 'UsersTableGateway' => function($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                    $resultSetPrototype = new ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype(new Users());
-                    return new TableGateway('users', $dbAdapter, null, $resultSetPrototype);
+                    return new TableGateway('users', $dbAdapter);
                 },
                 'Backend\Model\RolesTable' => function($sm) {
                     $tableGateway = $sm->get('RolesTableGateway');
@@ -57,9 +55,7 @@ class Module {
                 },
                 'RolesTableGateway' => function($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                    $resultSetPrototype = new ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype(new Roles());
-                    return new TableGateway('roles', $dbAdapter, null, $resultSetPrototype);
+                    return new TableGateway('roles', $dbAdapter);
                 },
             ),
         );
