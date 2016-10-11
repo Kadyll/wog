@@ -38,6 +38,7 @@ class IndexController extends AbstractActionController {
             $sm = $this->getServiceLocator();
             $this->_usersTable = $sm->get('Backend\Model\UsersTable');
         }
+        return $this->_usersTable;
     }
     
     public function indexAction() {
@@ -60,7 +61,6 @@ class IndexController extends AbstractActionController {
         if(!isset($aPost))
             return $this->redirect()->toRoute('home');
 
-        print_r($this->_getUsersTable());
         $bUser = $this->_getUsersTable()->isUser($aPost['pseudo'],$aPost['password']);
         
         if(!$bUser)
