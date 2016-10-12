@@ -64,7 +64,6 @@ class PageTeamController extends AbstractActionController {
     }
 
     public function savepageAction() {
-        die();
         $oRequest = $this->getRequest();
         if (!$oRequest->isPost()) {
             $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("Problème(s) lors du chargement des informations."));
