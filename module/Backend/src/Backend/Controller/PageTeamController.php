@@ -36,7 +36,7 @@ class PageTeamController extends AbstractActionController {
         if(!$this->_contentPageTable)
         {
             $sm = $this->getServiceLocator();
-            $this->$_contentPageTable = $sm->get('Backend\Model\ContentPageTable');
+            $this->_contentPageTable = $sm->get('Backend\Model\ContentPageTable');
         }
         return $this->_contentPageTable;
     }
