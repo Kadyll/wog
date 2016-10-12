@@ -14,6 +14,8 @@ use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Backend\Model\UsersTable;
 use Backend\Model\RolesTable;
+use Backend\Model\ContentPageTable;
+use Backend\Model\PagesTable;
 use Zend\Db\TableGateway\TableGateway;
 
 class Module {

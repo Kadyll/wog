@@ -1,0 +1,11 @@
+<section class="col-md-12">
+    <?php if(!$isAdmin): ?>
+    <div class="col-md-4"></div>
+    
+    <h4><?php echo $this>translate('Le contenu demandé ne vous ai pas accessible, vous allez être redirigé.'); ?></h4>
+    
+    <div class="col-md-4"></div>
+    <?php else: ?>
+    <?php echo $this->render('layout/app/menu'); ?>
+    <?php endif;?>
+</section>
