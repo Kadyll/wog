@@ -16,18 +16,17 @@ use Backend\Model\UsersTable;
 use Backend\Model\RolesTable;
 use Zend\Db\TableGateway\TableGateway;
 
-
 class Module {
 
     public function onBootstrap(MvcEvent $e) {
         $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
-        
+
         $oSessionConfig = new \Zend\Session\Config\SessionConfig();
         $oSessionManager = new \Zend\Session\SessionManager($oSessionConfig);
         $oSessionManager->start();
-        
+
         \Zend\Session\Container::setDefaultManager($oSessionManager);
     }
 
@@ -42,7 +41,7 @@ class Module {
             ),
         );
     }
-    
+
     public function getServiceConfig() {
         return array(
             'factories' => array(
@@ -63,6 +62,24 @@ class Module {
                 'RolesTableGateway' => function($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     return new TableGateway('roles', $dbAdapter);
+                },
+                'Backend\Model\PagesTable' => function($sm) {
+                    $tableGateway = $sm->get('PagesTableGateway');
+                    $table = new PagesTable($tableGateway);
+                    return $table;
+                },
+                'PagesTableGateway' => function($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    return new TableGateway('pages', $dbAdapter);
+                },
+                'Backend\Model\ContentPageTable' => function($sm) {
+                    $tableGateway = $sm->get('ContentPageTableGateway');
+                    $table = new ContentPageTable($tableGateway);
+                    return $table;
+                },
+                'ContentPageTableGateway' => function($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    return new TableGateway('contentPage', $dbAdapter);
                 },
             ),
         );

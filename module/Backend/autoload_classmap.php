@@ -4,6 +4,8 @@ return array(
     'Backend\Controller\IndexController' => __DIR__ . '/src/Backend/Controller/IndexController.php',
     'Backend\Model\UsersTable'           => __DIR__ . '/src/Backend/Model/UsersTable.php',
     'Backend\Model\RolesTable'           => __DIR__ . '/src/Backend/Model/RolesTable.php',
+    'Backend\Model\PagesTable'           => __DIR__ . '/src/Backend/Model/PagesTable.php',
+    'Backend\Model\ContentPageTable'     => __DIR__ . '/src/Backend/Model/ContentPageTable.php',
     'Backend\Module'                     => __DIR__ . '/Module.php',
     
 );

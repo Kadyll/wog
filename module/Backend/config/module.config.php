@@ -33,12 +33,33 @@ return array(
                     ),
                 ),
             ),
-            
+            'backend-team' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/backend/team[/:action]',
+                    'defaults' => array(
+                        'controller' => 'Backend\Controller\PageTeam',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            'backend-home' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/backend/home[/:action]',
+                    'defaults' => array(
+                        'controller' => 'Backend\Controller\PageHome',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
         ),
     ),
     'controllers' => array(
         'invokables' => array(
             'Backend\Controller\Index' => 'Backend\Controller\IndexController',
+            'Backend\Controller\PageTeam' => 'Backend\Controller\PageTeamController',
+            'Backend\Controller\PageHome' => 'Backend\Controller\PageHomeController',
         ),
     ),
     'view_manager' => array(
