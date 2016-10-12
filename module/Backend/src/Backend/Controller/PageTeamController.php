@@ -44,13 +44,22 @@ class PageTeamController extends AbstractActionController {
     public function indexAction() {
         $oViewModel = new ViewModel();
         $oSession = $this->_getSessionUser();
-        $bAdmin = false;
         
-        if ($oSession->offsetExists('administrateur')) {
-            $bAdmin = true;
+        if (!$oSession->offsetExists('administrateur')) {
+            $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("La page demandé n'est pas accessible."));
+            return $this->redirect()->toRoute('home');
+        }
+        
+        try
+        {
+            $aContentPage = $this->_contentPageTable->getContentByPageId('2')->toArray();
+            $oViewModel->setVariable('content', $aContentPage['content']);
+        } catch(Exception $ex)
+        {
+            $this->flashMessenger()->addMessage($this->_getServTranslator()->translate("Problème(s) lors du chargement des informations."));
+            return $this->redirect()->toRoute('backend');
         }
         $oViewModel->setTemplate('backend/team/team');
-        $oViewModel->setVariable('isAdmin', $bAdmin);
         
         return $oViewModel;
     }

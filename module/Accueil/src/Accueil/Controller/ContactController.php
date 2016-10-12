@@ -65,8 +65,13 @@ class ContactController extends AbstractActionController
     
     public function getFormAction()
     {
-        $aRequest = $this->getRequest();
-        $aPost = $aRequest->getPost();
+        $oRequest = $this->getRequest();
+        
+        if(!$oRequest->isPost()){
+            $this->flashMessenger()->addMessage($this->_getServTranslator()->translate("Erreur lors de l'envoie du message."));
+            return $this->redirect()->toRoute('contact');
+        }
+            $aPost = $oRequest->getPost();
         $sMail = $aPost['email'];
         $sSubject = $aPost['subject'];
         

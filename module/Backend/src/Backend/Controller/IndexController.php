@@ -56,11 +56,12 @@ class IndexController extends AbstractActionController {
     }
 
     public function getFormAction() {
-        $aRequest = $this->getRequest();
-        $aPost = $aRequest->getPost();
-        if(!isset($aPost))
+        $oRequest = $this->getRequest();
+        
+        if(!$oRequest->isPost())
             return $this->redirect()->toRoute('home');
-
+        
+        $aPost = $oRequest->getPost();
         $bUser = $this->_getUsersTable()->isUser($aPost['pseudo'],  md5($aPost['password']));
         
         if(!$bUser)
