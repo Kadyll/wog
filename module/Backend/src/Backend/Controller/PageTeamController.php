@@ -54,9 +54,11 @@ class PageTeamController extends AbstractActionController {
         {
             $aContentPage = $this->_contentPageTable->getContentByPageId('2')->toArray();
             $oViewModel->setVariable('content', $aContentPage['content']);
+            $oViewModel->setVariable('idPage', $aContentPage['idPage']);
+           
         } catch(Exception $ex)
         {
-            $this->flashMessenger()->addMessage($this->_getServTranslator()->translate("Problème(s) lors du chargement des informations."));
+            $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("Problème(s) lors du chargement des informations."));
             return $this->redirect()->toRoute('backend');
         }
         $oViewModel->setTemplate('backend/team/team');
@@ -64,7 +66,25 @@ class PageTeamController extends AbstractActionController {
         return $oViewModel;
     }
 
-
+    private function savepageAction()
+    {
+        $oRequest = $this->getRequest();
+        if(!$oRequest->isPost())
+        {
+            $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("Problème(s) lors du chargement des informations."));
+            return $this->redirect()->toRoute('backend-team');
+        }
+        
+        $aPost = $oRequest->getPost();
+        
+        try
+        {
+            $saveContent = $this->_contentPageTable->saveContentPage($aPost['content'],2);
+        } catch (Exception $ex) {
+            $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("Problème(s) lors du chargement des informations."));
+            return $this->redirect()->toRoute('backend-team');
+        }
+    }
 //    Récupere la session
     private function _getSessionUser() {
         if (!$this->_oSessionUser) {

@@ -51,4 +51,19 @@ class ContentPageTable
         $rowset = $this->tableGateway->select(array('idPage' => $iIdPage));
         return $rowset;
     }
+    
+    /**
+     *  update le contenu de la page passée en parametre
+     * @param type $content
+     * @param type $idPage
+     * @return type
+     */
+    public function saveContentPage($content,$idPage)
+    {
+        $iIdPage= (int)$idPage;
+        $where = new \Zend\Db\Sql\Where();
+        $where->equalTo('idPage', $iIdPage);
+        $rowset = $this->tableGateway->update($content, $where);
+        return $rowset;
+    }
 }
