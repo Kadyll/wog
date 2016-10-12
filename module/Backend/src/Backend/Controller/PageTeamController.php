@@ -78,6 +78,7 @@ class PageTeamController extends AbstractActionController {
             $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("Problème(s) lors du chargement des informations."));
             return $this->redirect()->toRoute('backend-team');
         }
+        return $this->redirect()->toRoute('backend-team');
     }
 
 //    Récupere la session
