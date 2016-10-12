@@ -49,7 +49,7 @@ class PageHomeController extends AbstractActionController {
         if ($oSession->offsetExists('administrateur')) {
             $bAdmin = true;
         }
-        
+        $oViewModel->setTemplate('backend/home/home');
         $oViewModel->setVariable('isAdmin', $bAdmin);
         
         return $oViewModel;

@@ -49,7 +49,7 @@ class PageTeamController extends AbstractActionController {
         if ($oSession->offsetExists('administrateur')) {
             $bAdmin = true;
         }
-        
+        $oViewModel->setTemplate('backend/team/team');
         $oViewModel->setVariable('isAdmin', $bAdmin);
         
         return $oViewModel;
