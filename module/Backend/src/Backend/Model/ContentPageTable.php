@@ -63,7 +63,7 @@ class ContentPageTable
         $iIdPage= (int)$idPage;
         $where = new \Zend\Db\Sql\Where();
         $where->equalTo('idPage', $iIdPage);
-        $rowset = $this->tableGateway->update($content, $where);
+        $rowset = $this->tableGateway->update(array('content'=>$content), $where);
         return $rowset;
     }
 }
