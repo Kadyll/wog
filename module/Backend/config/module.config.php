@@ -57,7 +57,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Backend\Controller\Index' => 'Backend\Controller\IndexController',
+            'Backend\Controller\Index'    => 'Backend\Controller\IndexController',
             'Backend\Controller\PageTeam' => 'Backend\Controller\PageTeamController',
             'Backend\Controller\PageHome' => 'Backend\Controller\PageHomeController',
         ),
