@@ -51,7 +51,6 @@ class PageTeamController extends AbstractActionController {
 
         try {
             $aContentPage = $this->_getContentPageTable()->getContentByPageId(2)->toArray();
-            var_dump($aContentPage);
         } catch (Exception $ex) {
             $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("Problème(s) lors du chargement des informations."));
             return $this->redirect()->toRoute('backend');
