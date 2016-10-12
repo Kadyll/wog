@@ -31,14 +31,14 @@ class PageHomeController extends AbstractActionController {
         return $this->_servTranslator;
     }
     
-    private function _getUsersTable()
+    private function _getContentPageTable()
     {
         if(!$this->$_contentPageTable)
         {
             $sm = $this->getServiceLocator();
             $this->_usersTable = $sm->get('Backend\Model\ContentPageTable');
         }
-        return $this->$_contentPageTable;
+        return $this->_contentPageTable;
     }
     
     public function indexAction() {

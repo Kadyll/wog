@@ -31,14 +31,14 @@ class PageTeamController extends AbstractActionController {
         return $this->_servTranslator;
     }
     
-    private function _getUsersTable()
+    private function _getContentPageTable()
     {
         if(!$this->$_contentPageTable)
         {
             $sm = $this->getServiceLocator();
             $this->$_contentPageTable = $sm->get('Backend\Model\ContentPageTable');
         }
-        return $this->$_contentPageTable;
+        return $this->_contentPageTable;
     }
     
     public function indexAction() {
@@ -52,7 +52,7 @@ class PageTeamController extends AbstractActionController {
         
         try
         {
-            $aContentPage = $this->_contentPageTable->getContentByPageId('2')->toArray();
+            $aContentPage = $this->_getContentPageTable()->getContentByPageId('2')->toArray();
             $oViewModel->setVariable('content', $aContentPage['content']);
             $oViewModel->setVariable('idPage', $aContentPage['idPage']);
            
@@ -79,7 +79,7 @@ class PageTeamController extends AbstractActionController {
         
         try
         {
-            $saveContent = $this->_contentPageTable->saveContentPage($aPost['content'],2);
+            $saveContent = $this->_getContentPageTable()->saveContentPage($aPost['content'],2);
         } catch (Exception $ex) {
             $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("Problème(s) lors du chargement des informations."));
             return $this->redirect()->toRoute('backend-team');
