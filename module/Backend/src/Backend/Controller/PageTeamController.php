@@ -57,8 +57,8 @@ class PageTeamController extends AbstractActionController {
             return $this->redirect()->toRoute('backend');
         }
         
-        $oViewModel->setVariable('content', $aContentPage['content']);
-        $oViewModel->setVariable('idPage', $aContentPage['idPage']);
+        $oViewModel->setVariable('content', $aContentPage[0]['content']);
+        $oViewModel->setVariable('idPage', $aContentPage[0]['idPage']);
         $oViewModel->setTemplate('backend/team/team');
 
         return $oViewModel;
