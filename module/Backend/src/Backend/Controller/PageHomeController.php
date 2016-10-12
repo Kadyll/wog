@@ -33,7 +33,7 @@ class PageHomeController extends AbstractActionController {
     
     private function _getContentPageTable()
     {
-        if(!$this->$_contentPageTable)
+        if(!$this->_contentPageTable)
         {
             $sm = $this->getServiceLocator();
             $this->_usersTable = $sm->get('Backend\Model\ContentPageTable');
