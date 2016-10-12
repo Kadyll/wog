@@ -63,7 +63,7 @@ class PageTeamController extends AbstractActionController {
         return $oViewModel;
     }
 
-    private function savepageAction() {
+    public function savepageAction() {
         die();
         $oRequest = $this->getRequest();
         if (!$oRequest->isPost()) {

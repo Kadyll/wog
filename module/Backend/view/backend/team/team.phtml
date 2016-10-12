@@ -3,7 +3,7 @@
     <?php echo $this->render('layout/app/menu'); ?>
     </div>
     <div class="col-md-9">
-        <form method="post" action='<?php echo $this->url('backend-team', array('action'=>'index')); ?>'>
+        <form method="post" action='<?php echo $this->url('backend-team', array('action'=>'savepage')); ?>'>
             <textarea class="ckeditor" name="content"><?php echo $this->content ;?></textarea>
             <input type='hidden' name='idPage' value='<?php echo $this->idPage; ?>'/>
             <input type='hidden' name="action" value="index"/>
