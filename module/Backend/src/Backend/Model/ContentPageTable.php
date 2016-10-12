@@ -32,7 +32,7 @@ class ContentPageTable
     public function getContentPageById($idContentPage)
     {
         $iIdContentPage = (int)$idContentPage;
-        $rowset = $this->tableGateway->select(array('idUser' => $iIdContentPage));
+        $rowset = $this->tableGateway->select(array('idPage' => $iIdContentPage));
         $row = $rowset->current();
         if(!$row) {
             throw new Exception("Could not find row");
