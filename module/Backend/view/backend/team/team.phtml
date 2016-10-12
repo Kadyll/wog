@@ -2,7 +2,7 @@
     <div class="col-md-2">
     <?php echo $this->render('layout/app/menu'); ?>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-10  wrapper-bg">
         <form method="post" action='<?php echo $this->url('backend-team', array('action'=>'savepage')); ?>'>
             <textarea class="ckeditor" name="content"><?php echo $this->content ;?></textarea>
             <input type='hidden' name='idPage' value='<?php echo $this->idPage; ?>'/>
