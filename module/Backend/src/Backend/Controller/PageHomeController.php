@@ -93,7 +93,7 @@ class PageHomeController extends AbstractActionController {
         $oRequest = $this->getRequest();
         if ($oRequest->isPost()) {
             $aPost = $oRequest->getPost();
-            if (isset($aPost['save'])) {
+            if (isset($aPost['enregistrer'])) {
                 try {
                     $aArticle['titleArticle'] = $aPost['titleArticle'];
                     $aArticle['content'] = $aPost['content'];
@@ -107,7 +107,7 @@ class PageHomeController extends AbstractActionController {
                     $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("Problème(s) lors de la sauvegarde de l'article."));
                     return $this->redirect()->toRoute('backend-home');
                 }
-            } elseif (isset($aPost['delete'])) {
+            } elseif (isset($aPost['effacer'])) {
                 try {
                     $this->_getContentPageTable()->deleteArticle($aPost['idContentPage']);
                     
