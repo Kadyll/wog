@@ -34,9 +34,7 @@ class RolesTable
         $iIdRole = (int)$idRole;
         $rowset = $this->tableGateway->select(array('idRole' => $iIdRole));
         $row = $rowset->current();
-        if(!$row) {
-            throw new Exception("Could not find row");
-        }
+
         return $row;
     }
 }

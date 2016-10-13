@@ -49,7 +49,7 @@ return array(
                     'route' => '/backend/home[/:action]',
                     'defaults' => array(
                         'controller' => 'Backend\Controller\PageHome',
-                        'action' => 'index',
+                        'action' => 'articles',
                     ),
                 ),
             ),

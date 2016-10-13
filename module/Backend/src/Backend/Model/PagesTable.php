@@ -34,10 +34,7 @@ class PagesTable
         $iIdPage = (int)$idPage;
         $rowset = $this->tableGateway->select(array('idPage' => $iIdPage));
         $row = $rowset->current();
-        if(!$row) {
-            throw new Exception("Could not find row");
-        }
-        
+
         return $row;
     }
     

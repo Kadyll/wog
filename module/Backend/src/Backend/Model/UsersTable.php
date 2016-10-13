@@ -34,9 +34,6 @@ class UsersTable
         $iIdUser = (int)$idUser;
         $rowset = $this->tableGateway->select(array('idUser' => $iIdUser));
         $row = $rowset->current();
-        if(!$row) {
-            throw new Exception("Could not find row");
-        }
         
         return $row;
     }

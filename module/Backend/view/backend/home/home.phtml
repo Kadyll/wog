@@ -9,6 +9,7 @@
                     <option value="<?php echo $article['idContentPage']; ?>"><?php echo $article['titleArticle']; ?></option>
                 <?php endforeach; ?>
             </select>
+            <button type="submit" class="btn btn-wog"><?php echo $this->translate('Afficher');?></button>
         </div>
     </form>
 
@@ -23,11 +24,11 @@
             <input type='hidden' name="action" value="index"/>
             <p></p>
             <div class="form-group">
-                <button type="submit" value="enregistrer" class="btn btn-wog"><?php echo $this->translate('Enregistrer'); ?></button>
+                <input type="submit" name="save" class="btn btn-wog" value="<?php echo $this->translate('Enregistrer'); ?>"/>
                 <?php if (isset($this->idContentPage)): ?>
-                    <button type="submit" value="effacer" class="btn btn-wog"><?php echo $this->translate('Effacer'); ?></button>
+                    <input type="submit" name="delete" class="btn btn-wog" value="<?php echo $this->translate('Effacer'); ?>"/>
                 <?php else : ?>
-                    <button  type="submit" value="effacer" class="btn btn-wog disabled"><?php echo $this->translate('Effacer'); ?></button>
+                    <input  type="submit" name="delete" class="btn btn-wog disabled" value="<?php echo $this->translate('Effacer'); ?>"/>
                 <?php endif; ?>
             </div>
         </form>

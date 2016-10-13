@@ -62,22 +62,28 @@ class PageHomeController extends AbstractActionController {
     public function articlesAction() {
         $oRequest = $this->getRequest();
         $oViewModel = new ViewModel();
+        $oSession = $this->_getSessionUser();
 
+        if (!$oSession->offsetExists('administrateur')) {
+            $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("La page demandé n'est pas accessible."));
+            return $this->redirect()->toRoute('home');
+        }
+        
         try {
             $aListeArticles = $this->_getContentPageTable()->getListeArticles()->toArray();
             $oViewModel->setVariable('listeArticles', $aListeArticles);
+            
         } catch (Exception $ex) {
             $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("Problème(s) lors du chargement des informations."));
             return $this->redirect()->toRoute('backend-home');
         }
         if ($oRequest->isPost()) {
             $aPost = $oRequest->getPost();
-            try {
-                $oArticle = $this->_getContentPageTable()->getArticle($aPost['idContentPage']);
-
-                $oViewModel->setVariable('titleArticle', $oArticle->titleArticle);
-                $oViewModel->setVariable('idContentPage', $oArticle->idContentPage);
-                $oViewModel->setVariable('content', $oArticle->content);
+            try {   
+                $aArticle = $this->_getContentPageTable()->getArticle($aPost['articles']);
+                $oViewModel->setVariable('titleArticle', $aArticle['titleArticle']);
+                $oViewModel->setVariable('idContentPage', $aArticle['idContentPage']);
+                $oViewModel->setVariable('content', $aArticle['content']);
             } catch (Exception $ex) {
                 $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("Problème(s) lors du chargement de l'article."));
                 return $this->redirect()->toRoute('backend-home');
@@ -93,12 +99,16 @@ class PageHomeController extends AbstractActionController {
         $oRequest = $this->getRequest();
         if ($oRequest->isPost()) {
             $aPost = $oRequest->getPost();
-            if (isset($aPost['enregistrer'])) {
+            
+            if (isset($aPost['save'])) {
+                
                 try {
+                    
                     $aArticle['titleArticle'] = $aPost['titleArticle'];
                     $aArticle['content'] = $aPost['content'];
                     $aArticle['idPage'] = 1;
                     $aArticle['type'] = 'article';
+                    $aArticle['idContentPage'] = $aPost['idContentPage'];
                     $this->_getContentPageTable()->saveArticle($aArticle);
                     
                     $this->flashMessenger()->addSuccessMessage($this->_getServTranslator()->translate("Article enregistré avec succès."));
@@ -107,7 +117,8 @@ class PageHomeController extends AbstractActionController {
                     $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("Problème(s) lors de la sauvegarde de l'article."));
                     return $this->redirect()->toRoute('backend-home');
                 }
-            } elseif (isset($aPost['effacer'])) {
+            } elseif (isset($aPost['delete'])) {
+                
                 try {
                     $this->_getContentPageTable()->deleteArticle($aPost['idContentPage']);
                     
