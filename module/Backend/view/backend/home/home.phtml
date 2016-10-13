@@ -1,11 +1,41 @@
 <section class="col-md-12">
-    <?php if(!$isAdmin): ?>
-    <div class="col-md-4"></div>
-    
-    <h4><?php echo $this->translate('Le contenu demandé n\'est pas accessible, vous allez être redirigé.'); ?></h4>
-    
-    <div class="col-md-4"></div>
-    <?php else: ?>
-    <?php echo $this->render('layout/app/menu'); ?>
-    <?php endif;?>
+    <div class="col-md-2">
+        <?php echo $this->render('layout/app/menu'); ?>
+    </div>
+    <form class="form-inline" method="post" action="<?php echo $this->url('backend-home', array('action' => 'articles')); ?>">
+        <div class="form-group">
+            <select name="articles" id='articles'>
+                <?php foreach ($this->listeArticles as $article): ?>
+                    <option value="<?php echo $article['idContentPage']; ?>"><?php echo $article['titleArticle']; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    </form>
+
+    <div class="col-md-10  wrapper-bg">
+        <form method="post" action='<?php echo $this->url('backend-home', array('action' => 'savearticle')); ?>'>
+            <div class="form-group">
+                <label>Titre*</label>
+                <input type="text" name="titleArticle" value="<?php echo $this->titleArticle; ?>" required />
+            </div>
+            <textarea class="ckeditor" name="content"><?php echo $this->content; ?></textarea>
+            <input type='hidden' name='idContentPage' value='<?php echo $this->idContentPage; ?>'/>
+            <input type='hidden' name="action" value="index"/>
+            <p></p>
+            <div class="form-group">
+                <button type="submit" value="enregistrer" class="btn btn-wog"><?php echo $this->translate('Enregistrer'); ?></button>
+                <?php if (isset($this->idContentPage)): ?>
+                    <button type="submit" value="effacer" class="btn btn-wog"><?php echo $this->translate('Effacer'); ?></button>
+                <?php else : ?>
+                    <button class="disabled" type="submit" value="effacer" class="btn btn-wog"><?php echo $this->translate('Effacer'); ?></button>
+                <?php endif; ?>
+            </div>
+        </form>
+    </div>
 </section>
+
+<?php
+echo $this->headScript()
+        ->appendFile($this->basePath('js/plugin/ckeditor/ckeditor.js'))
+        ->appendFile($this->basePath('js/backend.js'));
+?>

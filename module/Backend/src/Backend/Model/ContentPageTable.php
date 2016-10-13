@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -9,35 +10,48 @@
 
 namespace Backend\Model;
 
-
-
 use Zend\Db\TableGateway\TableGateway;
 
+class ContentPageTable {
 
-class ContentPageTable 
-{
     protected $tableGateway;
-    
-    public function __construct(TableGateway $tableGateway)
-    {
+
+    public function __construct(TableGateway $tableGateway) {
         $this->tableGateway = $tableGateway;
     }
 
-    public function fetchAll()
-    {
+    public function fetchAll() {
         $resultSet = $this->tableGateway->select();
         return $resultSet;
     }
-    
-    public function getContentPageById($idContentPage)
-    {
-        $iIdContentPage = (int)$idContentPage;
-        $rowset = $this->tableGateway->select(array('idPage' => $iIdContentPage));
+
+    public function getContentPageById($idPage) {
+        $iIdPage = (int) $idPage;
+        $rowset = $this->tableGateway->select(array('idPage' => $iIdPage));
         $row = $rowset->current();
-        if(!$row) {
+        if (!$row) {
             throw new Exception("Could not find row");
         }
+
+        return $row;
+    }
+
+    /**
+     * retourne l'article pour l'id passé en parametre
+     * @param type $idContentPage
+     * @return type
+     * @throws Exception
+     */
+    public function getArticle($idContentPage)
+    {
+        $iIdContentPage = (int)$idContentPage;
+        $rowset = $this->tableGateway->select(array('idContentPage' => $iIdContentPage));
+        $row = $rowset->current();
         
+        if (!$row) {
+            throw new Exception("L'article n'a pas été trouvé.");
+        }
+
         return $row;
     }
     
@@ -45,10 +59,19 @@ class ContentPageTable
      * retourne le contenu de la page passée en parametre
      * @param type $idPage
      */
-    public function getContentByPageId($idPage)
-    {
-        $iIdPage = (int)$idPage;
+    public function getContentByPageId($idPage) {
+        $iIdPage = (int) $idPage;
         $rowset = $this->tableGateway->select(array('idPage' => $iIdPage));
+        return $rowset;
+    }
+
+    /**
+     * recupere la liste des articles
+     * @return type
+     */
+    public function getListeArticles()
+    {
+        $rowset = $this->tableGateway->select(array('type'=> 'article'));
         return $rowset;
     }
     
@@ -58,12 +81,52 @@ class ContentPageTable
      * @param type $idPage
      * @return type
      */
-    public function saveContentPage($content,$idPage)
-    {
-        $iIdPage= (int)$idPage;
+    public function saveContentPage($content, $idPage) {
+        $iIdPage = (int) $idPage;
         $where = new \Zend\Db\Sql\Where();
         $where->equalTo('idPage', $iIdPage);
-        $rowset = $this->tableGateway->update(array('content'=>$content), $where);
+        $rowset = $this->tableGateway->update(array('content' => $content), $where);
         return $rowset;
     }
+
+    /**
+     * enregistre l'article passé en parametre
+     * @param array $article
+     * @return type
+     */
+    public function saveArticle(array $article) {
+        $query = $this->tableGateway->insert($article);
+        return $query;
+    }
+
+    /**
+     * supprime l'article pour l'id passé en parametre
+     * @param type $idContentPage
+     * @return type
+     */
+    public function deleteArticle($idContentPage) {
+        $iIdContentPage = (int) $idContentPage;
+        $where = new \Zend\Db\Sql\Where();
+        $where->equalTo('idContentPage', $iIdContentPage);
+        $query = $this->tableGateway->delete($where);
+
+        return $query;
+    }
+
+    /**
+     * 
+     * @param array $article
+     * @param type $idContentPage
+     * @return type
+     */
+    public function updateArticle(array $article, $idContentPage) {
+        $iIdContentPage = (int) $idContentPage;
+        $where = new \Zend\Db\Sql\Where();
+        $where->equalTo('idContentPage', $iIdContentPage);
+        
+        $query = $this->tableGateway->update($article, $where);
+        
+        return $query;
+    }
+
 }

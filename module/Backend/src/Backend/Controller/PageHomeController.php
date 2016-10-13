@@ -19,6 +19,7 @@ class PageHomeController extends AbstractActionController {
     public $_servTranslator = null;
     private $_oSessionUser = null;
     private $_contentPageTable;
+
     /**
      * Retourne le service de traduction en mode lazy.
      *
@@ -30,29 +31,95 @@ class PageHomeController extends AbstractActionController {
         }
         return $this->_servTranslator;
     }
-    
-    private function _getContentPageTable()
-    {
-        if(!$this->_contentPageTable)
-        {
+
+    private function _getContentPageTable() {
+        if (!$this->_contentPageTable) {
             $sm = $this->getServiceLocator();
             $this->_contentPageTable = $sm->get('Backend\Model\ContentPageTable');
         }
         return $this->_contentPageTable;
     }
-    
+
     public function indexAction() {
         $oViewModel = new ViewModel();
         $oSession = $this->_getSessionUser();
-        $bAdmin = false;
-        
-        if ($oSession->offsetExists('administrateur')) {
-            $bAdmin = true;
+
+        if (!$oSession->offsetExists('administrateur')) {
+            $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("La page demandé n'est pas accessible."));
+            return $this->redirect()->toRoute('home');
         }
+        $oViewModel->setVariable('idPage', '1');
         $oViewModel->setTemplate('backend/home/home');
-        $oViewModel->setVariable('isAdmin', $bAdmin);
-        
+
+
         return $oViewModel;
+    }
+
+    /*
+     * renvoie la liste des articles
+     */
+
+    public function articlesAction() {
+        $oRequest = $this->getRequest();
+        $oViewModel = new ViewModel();
+
+        try {
+            $aListeArticles = $this->_getContentPageTable()->getListeArticles()->toArray();
+            $oViewModel->setVariable('listeArticles', $aListeArticles);
+        } catch (Exception $ex) {
+            $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("Problème(s) lors du chargement des informations."));
+            return $this->redirect()->toRoute('backend-home');
+        }
+        if ($oRequest->isPost()) {
+            $aPost = $oRequest->getPost();
+            try {
+                $oArticle = $this->_getContentPageTable()->getArticle($aPost['idContentPage']);
+
+                $oViewModel->setVariable('titleArticle', $oArticle->titleArticle);
+                $oViewModel->setVariable('idContentPage', $oArticle->idContentPage);
+                $oViewModel->setVariable('content', $oArticle->content);
+            } catch (Exception $ex) {
+                $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("Problème(s) lors du chargement de l'article."));
+                return $this->redirect()->toRoute('backend-home');
+            }
+        }
+
+        $oViewModel->setTemplate('backend/home/home');
+
+        return $oViewModel;
+    }
+
+    public function savearticleAction() {
+        $oRequest = $this->getRequest();
+        if ($oRequest->isPost()) {
+            $aPost = $oRequest->getPost();
+            if (isset($aPost['save'])) {
+                try {
+                    $aArticle['titleArticle'] = $aPost['titleArticle'];
+                    $aArticle['content'] = $aPost['content'];
+                    $aArticle['idPage'] = 1;
+                    $aArticle['type'] = 'article';
+                    $this->_getContentPageTable()->saveArticle($aArticle);
+                    
+                    $this->flashMessenger()->addSuccessMessage($this->_getServTranslator()->translate("Article enregistré avec succès."));
+                    return $this->redirect()->toRoute('backend-home');
+                } catch (Exception $ex) {
+                    $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("Problème(s) lors de la sauvegarde de l'article."));
+                    return $this->redirect()->toRoute('backend-home');
+                }
+            } elseif (isset($aPost['delete'])) {
+                try {
+                    $this->_getContentPageTable()->deleteArticle($aPost['idContentPage']);
+                    
+                    $this->flashMessenger()->addSuccessMessage($this->_getServTranslator()->translate("Article supprimé avec succès."));
+                    return $this->redirect()->toRoute('backend-home');
+                } catch (Exception $ex) {
+                    $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("Problème(s) lors de la suppression de l'article."));
+                    return $this->redirect()->toRoute('backend-home');
+                }
+            }
+        }
+        return $this->redirect()->toRoute('backend-home');
     }
 
 //    Récupere la session
