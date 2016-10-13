@@ -29,10 +29,6 @@ class ContentPageTable {
         $iIdPage = (int) $idPage;
         $rowset = $this->tableGateway->select(array('idPage' => $iIdPage));
         $row = $rowset->current();
-        if (!$row) {
-            throw new Exception("Could not find row");
-        }
-
         return $row;
     }
 
@@ -46,13 +42,9 @@ class ContentPageTable {
     {
         $iIdContentPage = (int)$idContentPage;
         $rowset = $this->tableGateway->select(array('idContentPage' => $iIdContentPage));
-        $row = $rowset->current();
         
-        if (!$row) {
-            throw new Exception("L'article n'a pas été trouvé.");
-        }
 
-        return $row;
+        return $rowset->current();
     }
     
     /**
@@ -95,7 +87,16 @@ class ContentPageTable {
      * @return type
      */
     public function saveArticle(array $article) {
-        $query = $this->tableGateway->insert($article);
+        $query = $this->tableGateway->select(array('idContentPage'=>$article['idContentPage']));
+        $row = $query->current();
+        if($row){
+            $query = $this->updateArticle($article);
+        }else{
+            $article['idContentPage'] = null;
+            
+            $query = $this->tableGateway->insert($article);
+        }
+            
         return $query;
     }
 
@@ -116,11 +117,10 @@ class ContentPageTable {
     /**
      * 
      * @param array $article
-     * @param type $idContentPage
      * @return type
      */
-    public function updateArticle(array $article, $idContentPage) {
-        $iIdContentPage = (int) $idContentPage;
+    public function updateArticle(array $article) {
+        $iIdContentPage = (int)$article['idContentPage'];
         $where = new \Zend\Db\Sql\Where();
         $where->equalTo('idContentPage', $iIdContentPage);
         
