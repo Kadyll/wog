@@ -68,6 +68,19 @@ class ContentPageTable {
     }
     
     /**
+     * recupere la liste des articles par ordre décroissant de création
+     * @return type
+     */
+    public function getListeArticlesDesc()
+    {
+        $select = new \Zend\Db\Sql\Select('contentPage');
+        $select->where->equalTo('type','article');
+        $select->order('idContentPage DESC');
+        
+        $rowset = $this->tableGateway->selectWith($select);
+        return $rowset;
+    }
+    /**
      *  update le contenu de la page passée en parametre
      * @param type $content
      * @param type $idPage
