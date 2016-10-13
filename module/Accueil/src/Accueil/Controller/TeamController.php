@@ -15,7 +15,7 @@ use Zend\View\Model\ViewModel;
 class TeamController extends AbstractActionController
 {
     public $_servTranslator = null;
-
+    private $_contentPageTable;
     /**
      * Retourne le service de traduction en mode lazy.
      *
@@ -27,11 +27,29 @@ class TeamController extends AbstractActionController
         }
         return $this->_servTranslator;
     }
-
+    
+    private function _getContentPageTable() {
+        if (!$this->_contentPageTable) {
+            $sm = $this->getServiceLocator();
+            $this->_contentPageTable = $sm->get('Backend\Model\ContentPageTable');
+        }
+        return $this->_contentPageTable;
+    }
+    
     public function indexAction()
     {
+        $oViewModel = new ViewModel();
+        try
+        {
+            $aTeam = $this->_getContentPageTable()->getContentByPageId(2);
+            $oViewModel->setVariable('content',$aTeam['content']);
+            
+        } catch (Exception $ex) {
+
+        }
         
-        return new ViewModel();
+        $oViewModel->setTemplate('accueil/team/team');
+        return $oViewModel;
     }
 
 }

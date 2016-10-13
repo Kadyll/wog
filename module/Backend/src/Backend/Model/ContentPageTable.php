@@ -54,7 +54,7 @@ class ContentPageTable {
     public function getContentByPageId($idPage) {
         $iIdPage = (int) $idPage;
         $rowset = $this->tableGateway->select(array('idPage' => $iIdPage));
-        return $rowset;
+        return $rowset->toArray()[0];
     }
 
     /**

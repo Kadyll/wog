@@ -50,14 +50,14 @@ class PageTeamController extends AbstractActionController {
         }
 
         try {
-            $aContentPage = $this->_getContentPageTable()->getContentByPageId(2)->toArray();
+            $aContentPage = $this->_getContentPageTable()->getContentByPageId(2);
         } catch (Exception $ex) {
             $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("Problème(s) lors du chargement des informations."));
             return $this->redirect()->toRoute('backend');
         }
         
-        $oViewModel->setVariable('content', $aContentPage[0]['content']);
-        $oViewModel->setVariable('idPage', $aContentPage[0]['idPage']);
+        $oViewModel->setVariable('content', $aContentPage['content']);
+        $oViewModel->setVariable('idPage', $aContentPage['idPage']);
         $oViewModel->setTemplate('backend/team/team');
 
         return $oViewModel;
