@@ -112,7 +112,7 @@ class PageGalleryController extends AbstractActionController {
             $saveElement = $this->_getGalleryTable()->saveElement($aElement);
             
             if ($aPost['titleImage'] != '' && $aPost['titleVideo'] === '')
-                move_uploaded_file($aPost['image']['tmp_name'], "{$basePath}screen/{$aPost['image']['name']}");
+                move_uploaded_file($aPost['image']['tmp_name'], "{$basePath}img/screen/{$aPost['image']['name']}");
                 
         } catch (Exception $ex) {
             $this->flashMessenger()->addErrorMessage($this->_getServTranslator()->translate("Problème(s) lors du chargement des informations."));
