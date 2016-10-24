@@ -1,0 +1,28 @@
+<?php
+
+echo $this->headScript()
+        ->appendFile($this->basePath('plugin/unitegallery/js/jquery-11.0.min.js'))
+        ->appendFile($this->basePath('plugin/unitegallery/js/unitegallery.min.js'))
+        ->appendFile($this->basePath('plugin/unitegallery/themes/grid/ug-theme-grid.js'));
+echo $this->headLink()
+        ->appendStylesheet($this->basePath('plugin/unitegallery/css/unite-gallery.css'))
+        ->appendStylesheet($this->basePath('plugin/unitegallery/themes/grid/ug-theme-grid.css'));
+
+?>
+<div class="col-md-2"></div>
+<div  id='gallery' style="display:none">
+    <?php foreach($this->listElements as $element): 
+        if($element['type'] === 'image'): ?>
+        <img alt="<?php echo $element['title']; ?>" src="<?php echo $this->basePath('/img/screen/'.$element['location']);?>"
+         data-image='<?php echo $this->basePath('/img/screen/'.$element['location']);?>'
+         data-description='<?php echo $element['title']; ?>'>
+        <?php else: ?>
+        <img alt="<?php echo $element['title']; ?>" 
+         data-type="youtube"
+         data-videoid='<?php echo $element['location'];?>'
+         data-description='<?php echo $element['title']; ?>'>
+        <?php endif; ?>
+        <?php endforeach; ?>
+    
+</div>
+<div class="col-md-2"></div>

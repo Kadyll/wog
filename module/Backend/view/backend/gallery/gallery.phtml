@@ -1,0 +1,50 @@
+<section class="col-md-12">
+    <div class="col-md-2">
+        <?php echo $this->render('layout/app/menu'); ?>
+    </div>
+    <form class="form-horizontal col-md-10" enctype="multipart/form-data" method="post" action="<?php echo $this->url('backend-gallery', array('action' => 'getFormUpload')); ?>">
+        <div class="form-head">
+            <h4><?php echo $this->translate('Upload d\'images/videos pour la gallerie'); ?></h4>
+        </div>
+        <div class="form-group">
+            <label for="inputType"><?php echo $this->translate('Type de fichier :'); ?></label>
+            <select id="inputFileType" onchange="displayForm(this.value)">
+                <option value="image" ><?php echo $this->translate('Image');?> </option>
+                <option value="youtube"><?php echo $this->translate('Lien Youtube'); ?> </option>
+            </select>
+        </div>
+        <div class="form-group" id="imageForm">
+            <label for="titleImageInput" class="control-label"><?php echo $this->translate('Titre*'); ?></label>
+            <input type="text" name="titleImage" class="form-control" id="titleImageInput" placeholder="Titre de l'image" />
+        
+            <input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
+            <label for="imageInput"><?php echo $this->translate('Image :'); ?></label>
+            <input  type="file" name="image" id="imageInput" accept="image/*"/>
+        </div>
+        <div class="form-group" id="youtubeForm" style="display: none">
+            <label for="titleVideoInput" class="control-label"><?php echo $this->translate('Titre*'); ?></label>
+            <input type="text" name="titleVideo" class="form-control" id="titleVideoInput" placeholder="Titre de la video" />
+
+            <label for="imageInput"><?php echo $this->translate('Lien de la vidéo* :'); ?></label>
+            <input class="form-control" type="text" name="linkVideo"/>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-wog btn-lg"><?php echo $this->translate('Envoyer'); ?></button>
+        </div>
+    </form>
+</section>
+
+<script>
+    function displayForm(val){
+       if(val === "image")
+       {
+           document.getElementById("imageForm").style.display = "block";
+           document.getElementById("youtubeForm").style.display = "none";
+       }else{
+           if(val === "youtube"){
+               document.getElementById("imageForm").style.display = "none";
+               document.getElementById("youtubeForm").style.display = "block";
+           }
+       }
+   };
+</script>

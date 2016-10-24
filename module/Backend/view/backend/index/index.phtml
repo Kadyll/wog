@@ -1,7 +1,7 @@
 <section class="col-md-12">
-    <?php if(!$isAdmin): ?>
-    <div class="col-md-4"></div>
-    
+    <?php if (!$isAdmin): ?>
+        <div class="col-md-4"></div>
+
         <form class="form-horizontal col-md-4" method="post" action="<?php echo $this->url('backend', array('action' => 'getForm')); ?>">
             <div class="form-head">
                 <h4><?php echo $this->translate('Connexion'); ?></h4>
@@ -18,9 +18,11 @@
                 <button type="submit" class="btn btn-wog btn-lg"><?php echo $this->translate('Se connecter'); ?></button>
             </div>
         </form>
-    
-    <div class="col-md-4"></div>
+
+        <div class="col-md-4"></div>
     <?php else: ?>
-    <?php echo $this->render('layout/app/menu'); ?>
-    <?php endif;?>
+        <div class="col-md-2">
+            <?php echo $this->render('layout/app/menu'); ?>
+        </div>
+    <?php endif; ?>
 </section>

@@ -53,6 +53,16 @@ return array(
                     ),
                 ),
             ),
+            'backend-gallery' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/backend/gallery[/:action]',
+                    'defaults' => array(
+                        'controller' => 'Backend\Controller\PageGallery',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
         ),
     ),
     'controllers' => array(
@@ -60,6 +70,7 @@ return array(
             'Backend\Controller\Index'    => 'Backend\Controller\IndexController',
             'Backend\Controller\PageTeam' => 'Backend\Controller\PageTeamController',
             'Backend\Controller\PageHome' => 'Backend\Controller\PageHomeController',
+            'Backend\Controller\PageGallery' => 'Backend\Controller\PageGalleryController',
         ),
     ),
     'view_manager' => array(

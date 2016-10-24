@@ -43,6 +43,16 @@ return array(
                     ),
                 ),
             ),
+            'gallery' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/gallery',
+                    'defaults' => array(
+                        'controller' => 'Accueil\Controller\Gallery',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
             
         ),
     ),
@@ -51,6 +61,7 @@ return array(
             'Accueil\Controller\Index' => 'Accueil\Controller\IndexController',
             'Accueil\Controller\Contact' => 'Accueil\Controller\ContactController',
             'Accueil\Controller\Team' => 'Accueil\Controller\TeamController',
+            'Accueil\Controller\Gallery' => 'Accueil\Controller\GalleryController',
         ),
     ),
     'view_manager' => array(

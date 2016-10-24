@@ -16,6 +16,7 @@ use Backend\Model\UsersTable;
 use Backend\Model\RolesTable;
 use Backend\Model\ContentPageTable;
 use Backend\Model\PagesTable;
+use Backend\Model\GalleryTable;
 use Zend\Db\TableGateway\TableGateway;
 
 class Module {
@@ -82,6 +83,15 @@ class Module {
                 'ContentPageTableGateway' => function($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     return new TableGateway('contentPage', $dbAdapter);
+                },
+                'Backend\Model\GalleryTable' => function($sm) {
+                    $tableGateway = $sm->get('GalleryTableGateway');
+                    $table = new GalleryTable($tableGateway);
+                    return $table;
+                },
+                'GalleryTableGateway' => function($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    return new TableGateway('gallery', $dbAdapter);
                 },
             ),
         );
