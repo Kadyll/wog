@@ -13,8 +13,11 @@ $(window).scroll(function () {
 
 jQuery(document).ready(function () {
     jQuery('#gallery').unitegallery({
-        thumb_image_overlay_effect:true,
-        thumb_image_overlay_type:"sepia"
+        tile_enable_image_effect:true,
+        tile_image_effect_type:"sepia",
+        tile_enable_overlay:false,
+        tile_enable_icons:false,
+        tiles_type:"justified",
     });
 });
 
