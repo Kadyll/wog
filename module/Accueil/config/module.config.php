@@ -23,6 +23,16 @@ return array(
                     ),
                 ),
             ),
+            'accueil' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/accueil',
+                    'defaults' => array(
+                        'controller' => 'Accueil\Controller\Home',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
             'contact' => array(
                 'type' => 'Segment',
                 'options' => array(
@@ -53,7 +63,6 @@ return array(
                     ),
                 ),
             ),
-            
         ),
     ),
     'controllers' => array(
@@ -62,6 +71,7 @@ return array(
             'Accueil\Controller\Contact' => 'Accueil\Controller\ContactController',
             'Accueil\Controller\Team' => 'Accueil\Controller\TeamController',
             'Accueil\Controller\Gallery' => 'Accueil\Controller\GalleryController',
+            'Accueil\Controller\Home' => 'Accueil\Controller\HomeController',
         ),
     ),
     'view_manager' => array(

@@ -1,0 +1,19 @@
+<div class="col-md-12 ">
+    <section class="col-md-10 wrapper-home">
+        <?php if ($this->listeArticles): ?>
+            <?php foreach ($this->listeArticles as $article): ?>
+                <article class="news">
+                    <h4 class="article-title"><?php echo $article['titleArticle']; ?></h4>
+                    <hr>
+                    <?php echo $article['content']; ?>
+                </article>
+            <?php endforeach; ?>
+        <?php endif; ?>
+
+    </section>
+    <aside class="col-md-2 ">
+        <a href="http://wowprogress.com/">
+            <img alt="WoW Guild Rankings" src="http://wowprogress.com/guild_img/106564/out/type.site" border="0"/>
+        </a>
+    </aside>
+</div>

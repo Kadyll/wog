@@ -1,19 +1,55 @@
-<div class="col-md-12 ">
-    <section class="col-md-10 wrapper-home">
-        <?php if ($this->listeArticles): ?>
-            <?php foreach ($this->listeArticles as $article): ?>
-                <article class="news">
-                    <h4 class="article-title"><?php echo $article['titleArticle']; ?></h4>
-                    <hr>
-                    <?php echo $article['content']; ?>
-                </article>
-            <?php endforeach; ?>
-        <?php endif; ?>
+<div class="banner-shadow"></div>
 
-    </section>
-    <aside class="col-md-2 ">
-        <a href="http://wowprogress.com/">
-            <img alt="WoW Guild Rankings" src="http://wowprogress.com/guild_img/106564/out/type.site" border="0"/>
-        </a>
-    </aside>
-</div>
+<section>
+    <div class="fixed-background">
+        <div class="col-md-3 welcome">
+            <p>Bienvenue sur le site de la guilde Wrath Of God</p>
+            <p><a class="btn btn-info " href="<?php echo $this->url('accueil'); ?>"><?php echo $this->translate('Acceder au site'); ?></a></p>
+        </div>
+    </div>
+    <div class="wog-info">
+        <div class="content-container">
+
+            <div class="logo">
+                <a href="<?php echo $this->url('accueil'); ?>">
+                    <img style="width:200px;" src="<?php echo $this->basePath('img/Logo_WoGbis.png'); ?>" alt="logo WoG">
+                </a>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h4>Wrath Of God</h4>
+                <h6><i>Une nouvelle ère, de nouveaux objectifs, un ultime rassemblement...</i></h6>
+                <p>
+                    Les WoG existent depuis le 22 janvier 2008. Après avoir vécue quelques belles années de raids de 
+                    Karazhan à la Descente de l’Aile Noire, la guilde a cessée d’exister. 
+                    Oui la Pandarie aura eut raison de longues années de jeu commun, 
+                    mais pas d’une amitié IRL qui s’est créée entre les membres fondateurs. 
+                    Warlords of Draenor aura permis de réunir de nouveau les pères fondateurs de cette guilde, 
+                    d’abord sous une autre bannière, mais aujourd’hui de retour chez eux.
+                </p>
+                <a class="btn btn-info btn-lg" href="<?php echo $this->url('team'); ?>"><?php echo $this->translate('En savoir plus'); ?></a>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="light-part">
+        <h1>Où et comment nous contacter</h1>
+        <p>Vous pouvez nous retrouver en jeu sur le groupement de serveurs Français <strong>[ Sargeras - Garona - Ner'Zhul ]</strong></p>
+        <p>Ou via les liens disponible ci-dessous :</p>
+        <div class="link-accueil">
+            <p>
+                <a href="<?php echo $this->url('contact'); ?>"><span class="glyphicon glyphicon-envelope"></span></a>
+                | 
+                <a href="http://forum.wrathofgod.fr"> Forum</a>
+            </p>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="dark-part">
+        <p><a href="https://worldofwarcraft.com/fr-fr/">Blizzard</a> | <a href="fr.wowhead.com">WoWHead</a> | <a href="www.wowprogress.com">WoWProgress</a></p>
+        <strong>&copy; 2016 - <?php echo getdate()['year']; ?> by Wrath of God </strong> <i><?php echo $this->translate('Tous droits réservés.'); ?></i>
+    </div>
+</section>

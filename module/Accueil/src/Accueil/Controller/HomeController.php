@@ -12,7 +12,7 @@ namespace Accueil\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class IndexController extends AbstractActionController
+class HomeController extends AbstractActionController
 {
     public $_servTranslator = null;
     private $_contentPageTable;
@@ -48,8 +48,8 @@ class IndexController extends AbstractActionController
         } catch (Exception $ex) {
             
         }
-        $this->layout('layout/accueil');
-        $oViewModel->setTemplate('accueil/index/index');
+        
+        $oViewModel->setTemplate('accueil/home/home');
         return $oViewModel;
     }
 
