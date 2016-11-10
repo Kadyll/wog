@@ -462,20 +462,21 @@ footer
     width: 100px;
 }
 
-@media (max-width:1440px)
+@media (max-width:1439px)
 {
     .fixed-background
     {
         background-size: contain;
     }
+    .fixed-background .welcome
+    {
+        display: none;
+    }
 }
 
 @media (max-width:768px)
 {
-    .fixed-background p
-    {
-        display: none;
-    }
+
     .wog-info .logo
     {
         display: none;
