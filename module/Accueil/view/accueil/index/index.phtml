@@ -1,22 +1,15 @@
-<div class="banner-shadow"></div>
 
 <section>
-    <div class="fixed-background">
-        <div class="col-md-3 welcome">
-            <p>Bienvenue sur le site de la guilde Wrath Of God</p>
-            <p><a class="btn btn-info " href="<?php echo $this->url('accueil'); ?>"><?php echo $this->translate('Acceder au site'); ?></a></p>
-        </div>
-    </div>
-    <div class="wog-info">
+    
+    <div class="first-dark-part">
         <div class="content-container">
 
             <div class="logo">
-                <a href="<?php echo $this->url('accueil'); ?>">
+                <a href="<?php echo $this->url('home'); ?>">
                     <img style="width:200px;" src="<?php echo $this->basePath('img/Logo_WoGbis.png'); ?>" alt="logo WoG">
                 </a>
             </div>
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
+            
                 <h4>Wrath Of God</h4>
                 <h6><i>Une nouvelle ère, de nouveaux objectifs, un ultime rassemblement...</i></h6>
                 <p>
@@ -29,7 +22,7 @@
                 </p>
                 <a class="btn btn-info btn-lg" href="<?php echo $this->url('team'); ?>"><?php echo $this->translate('En savoir plus'); ?></a>
             </div>
-            <div class="col-md-2"></div>
+            
         </div>
     </div>
 </section>
@@ -37,7 +30,7 @@
     <div class="light-part">
         <h1>Où et comment nous contacter</h1>
         <p>Vous pouvez nous retrouver en jeu sur le groupement de serveurs Français <strong>[ Sargeras - Garona - Ner'Zhul ]</strong></p>
-        <p>Ou via les liens disponible ci-dessous :</p>
+        <p>Ou via les liens disponibles ci-dessous :</p>
         <div class="link-accueil">
             <p>
                 <a href="<?php echo $this->url('contact'); ?>"><span class="glyphicon glyphicon-envelope"></span></a>
@@ -49,7 +42,7 @@
 </section>
 <section>
     <div class="dark-part">
-        <p><a href="https://worldofwarcraft.com/fr-fr/">Blizzard</a> | <a href="fr.wowhead.com">WoWHead</a> | <a href="www.wowprogress.com">WoWProgress</a></p>
+        <p><a href="https://worldofwarcraft.com/fr-fr/">Blizzard</a> | <a href="http://fr.wowhead.com">WoWHead</a> | <a href="http://www.wowprogress.com">WoWProgress</a></p>
         <strong>&copy; 2016 - <?php echo getdate()['year']; ?> by Wrath of God </strong> <i><?php echo $this->translate('Tous droits réservés.'); ?></i>
     </div>
 </section>

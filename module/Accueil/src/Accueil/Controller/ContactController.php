@@ -60,6 +60,8 @@ class ContactController extends AbstractActionController
         $oViewModel->setVariable('publicKey', $publicKey);
         $oViewModel->setVariable('privateKey', $privateKey);
         $oViewModel->setTemplate('accueil/contact/index');
+        
+        $this->layout('layout/accueil');
         return $oViewModel;
     }
     

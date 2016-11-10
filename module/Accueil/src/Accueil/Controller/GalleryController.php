@@ -48,7 +48,7 @@ class GalleryController extends AbstractActionController
         } catch (Exception $ex) {
             return $this->redirect()->toRoute('home');
         }
-        
+        $this->layout('layout/accueil');
         $oViewModel->setTemplate('accueil/gallery/gallery');
         return $oViewModel;
     }

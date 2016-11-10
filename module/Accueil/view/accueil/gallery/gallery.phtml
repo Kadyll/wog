@@ -1,5 +1,4 @@
 <?php
-
 echo $this->headScript()
         ->appendFile($this->basePath('plugin/unitegallery/js/jquery-11.0.min.js'))
         ->appendFile($this->basePath('plugin/unitegallery/js/unitegallery.min.js'))
@@ -7,22 +6,42 @@ echo $this->headScript()
 echo $this->headLink()
         ->appendStylesheet($this->basePath('plugin/unitegallery/css/unite-gallery.css'))
         ->appendStylesheet($this->basePath('plugin/unitegallery/themes/grid/ug-theme-grid.css'));
-
 ?>
-<div class="col-md-2"></div>
-<div  id='gallery' style="display:none">
-    <?php foreach($this->listElements as $element): 
-        if($element['type'] === 'image'): ?>
-        <img alt="<?php echo $element['title']; ?>" src="<?php echo $this->basePath('/img/screen/'.$element['location']);?>"
-         data-image='<?php echo $this->basePath('/img/screen/'.$element['location']);?>'
-         data-description='<?php echo $element['title']; ?>'>
-        <?php else: ?>
-        <img alt="<?php echo $element['title']; ?>" 
-         data-type="youtube"
-         data-videoid='<?php echo $element['location'];?>'
-         data-description='<?php echo $element['title']; ?>'>
-        <?php endif; ?>
-        <?php endforeach; ?>
-    
-</div>
-<div class="col-md-2"></div>
+
+<section>
+    <div class="first-dark-part">
+        <div class="content-container">
+            <div class="logo">
+                <a href="<?php echo $this->url('home'); ?>">
+                    <img style="width:200px;" src="<?php echo $this->basePath('img/Logo_WoGbis.png'); ?>" alt="logo WoG">
+                </a>
+            </div>
+            
+                <div  id='gallery' style="display:none">
+                    <?php
+                    foreach ($this->listElements as $element):
+                        if ($element['type'] === 'image'):
+                            ?>
+                            <img alt="<?php echo $element['title']; ?>" src="<?php echo $this->basePath('/img/screen/' . $element['location']); ?>"
+                                 data-image='<?php echo $this->basePath('/img/screen/' . $element['location']); ?>'
+                                 data-description='<?php echo $element['title']; ?>'>
+                             <?php else: ?>
+                            <img alt="<?php echo $element['title']; ?>" 
+                                 data-type="youtube"
+                                 data-videoid='<?php echo $element['location']; ?>'
+                                 data-description='<?php echo $element['title']; ?>'>
+                             <?php endif; ?>
+                         <?php endforeach; ?>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+<section>
+    <div class="light-part">
+        <p><a href="https://worldofwarcraft.com/fr-fr/">Blizzard</a> | <a href="http://fr.wowhead.com">WoWHead</a> | <a href="http://www.wowprogress.com">WoWProgress</a></p>
+        <strong>&copy; 2016 - <?php echo getdate()['year']; ?> by Wrath of God </strong> <i><?php echo $this->translate('Tous droits réservés.'); ?></i>
+    </div>
+</section>

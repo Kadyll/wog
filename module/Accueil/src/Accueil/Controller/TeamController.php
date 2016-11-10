@@ -47,7 +47,7 @@ class TeamController extends AbstractActionController
         } catch (Exception $ex) {
 
         }
-        
+        $this->layout('layout/accueil');
         $oViewModel->setTemplate('accueil/team/team');
         return $oViewModel;
     }

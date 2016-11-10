@@ -25,6 +25,7 @@ body {
     color: rgb(49,53,61);
     background-color: rgb(0,0,0);
 }
+
 strong
 {
     font-family: 'exobold', sans-serif;
@@ -33,7 +34,7 @@ i
 {
     font-family: 'exoitalic',sans-serif;
 }
-h1,h2,h3,h4
+h1,h2,h3,h4,p
 {
     font-family: 'exo',sans-serif;
 }
@@ -346,12 +347,26 @@ footer
 {
     background-color: transparent;
 }
-.wog-info
+.fixed-background ul
+{
+    padding: 0px;
+}
+.fixed-background li
+{
+    padding: 0px;
+}
+.fixed-background li a
+{
+    margin: 2px;
+    
+}
+.first-dark-part
 {
     display: inline-block;
     position: relative;
     margin-top: 20%;
-    padding-bottom: 25px;
+    padding-top: 50px;
+    padding-bottom: 50px;
     width: 100%;
     background: -moz-linear-gradient(top, rgba(28,29,33,0.6) 0%, rgba(28,29,33,1) 60%); 
     background: -webkit-linear-gradient(top, rgba(28,29,33,0.6) 0%,rgba(28,29,33,1) 60%); 
@@ -359,16 +374,14 @@ footer
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#991c1d21', endColorstr='#212121',GradientType=0 );
     text-align: center;
     color: rgba(211,209,206,1);
-    
 }
-.wog-info h4
+.first-dark-part h4
 {
-    padding-top: 50px;
+    padding-top: 0px;
 }
-.wog-info .logo
+.first-dark-part .logo
 {
     margin: auto;
-    padding-top: 100px;
     width: 200px;
     height: 250px;
     
@@ -383,8 +396,15 @@ footer
     color: rgb(28,29,33);
     padding-top: 25px;
     padding-bottom: 25px;
-    
+    margin-top: 0px;
+    margin-bottom: 0px;
     text-align: center;
+}
+.content-container
+{
+    display: inline-block;
+    align-content: center;
+    width: 70%;
 }
 
 .link-accueil p
@@ -432,10 +452,15 @@ footer
 {
     -webkit-transition: ease 0.5s;
     transition: ease 0.5s;
+    border: 1px solid rgb(28,29,33);
     background-color: rgba(211,209,206,1);
     color: rgba(28,29,33,1) !important;
 }
 
+.btn-nav
+{
+    width: 100px;
+}
 
 @media (max-width:1440px)
 {

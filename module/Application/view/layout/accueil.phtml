@@ -22,10 +22,11 @@
     </head>
     <body>           
         <header>
+            <div class="banner-shadow"></div>
             <nav class="navbar navbar-default nav-home">
                 <div class="container-fluid">
                     <ul class="nav navbar-nav">
-                        <li><a href="<?php echo $this->url('accueil'); ?>"><?php echo $this->translate('Accueil'); ?></a></li>
+                        <li><a href="<?php echo $this->url('home'); ?>"><?php echo $this->translate('Accueil'); ?></a></li>
                         <li><a href="<?php echo $this->url('gallery'); ?>"><?php echo $this->translate('Gallerie'); ?></a></li>
                         <li><a href="<?php echo $this->url('team'); ?>"><?php echo $this->translate('Team'); ?></a></li>
                         <li><a href="http://forum.wrathofgod.fr"><?php echo $this->translate('Forum'); ?></a></li>
@@ -36,10 +37,22 @@
         </header>
         <!--                Container                -->
         <div id="bloc_page">
+            <div class="fixed-background">
+                <div class="col-md-3 welcome">
+                    <p>Bienvenue sur le site de la guilde Wrath Of God</p>
+                    <ul>
+                        <li><a class="btn btn-info btn-nav" href="<?php echo $this->url('home'); ?>"><?php echo $this->translate('Accueil'); ?></a></li>
+                        <li><a class="btn btn-info btn-nav" href="<?php echo $this->url('gallery'); ?>"><?php echo $this->translate('Gallerie'); ?></a></li>
+                        <li><a class="btn btn-info btn-nav" href="<?php echo $this->url('team'); ?>"><?php echo $this->translate('Team'); ?></a></p>
+                        <li><a class="btn btn-info btn-nav" href="http://forum.wrathofgod.fr"><?php echo $this->translate('Forum'); ?></a></li>
+                        <li><a class="btn btn-info btn-nav" href="<?php echo $this->url('contact'); ?>"><?php echo $this->translate('Contact'); ?></a></li>
+                    </ul>
+                </div>
+            </div>
             <?php echo $this->content; ?>
         </div>
         <!--               Footer                   -->
-        
+
         <!--            Control sidebar             -->
 
         <!-- /container -->
